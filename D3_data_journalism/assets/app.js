@@ -162,6 +162,7 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
     chartGroup.append("g")
         .call(leftAxis);
 
+    // Appends Initial Circles
     let circlesGroup = chartGroup.selectAll("circle")
         .data(journalismData)
         .enter()
@@ -171,4 +172,53 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("r", 20)
         .attr("fill", "pink")
         .attr("opacity", ".5");
+    
+    // Creates groups for two x-axis labels
+    let labelsGroup = chartGroup.append("g")
+        .attr("transform", `translate(${width / 2}, ${height + 20})`);
+
+    let povertyLabel = labelsGroup.append("text")
+        .attr("x", 0)
+        .attr("y", 20)
+        .attr("value", "poverty") // Value being grabbed for event listener
+        .classed("active", true)
+        .text("In Poverty (%)");
+
+    let ageLabel = labelsGroup.append("text")
+        .attr("x", 0)
+        .attr("y", 40)
+        .attr("value", "age") // Value being grabbed for event listener
+        .classed("inactive", true)
+        .text("Age (Median)");
+
+    let incomeLabel = labelsGroup.append("text")
+        .attr("x", 0)
+        .attr("y", 60)
+        .attr("value", "income") // Value being grabbed for event listener
+        .classed("inactive", true)
+        .text("Household Income (Median)");
+    
+    let healthcareLabel = labelsGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "lem")
+        .classed("active", true)
+        .text("Lacks Healthcare (%)");
+
+    let smokesLabel = labelsGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x", -20 - (height / 2))
+        .attr("dy", "lem")
+        .classed("inactive", false)
+        .text("Smokes (%)");
+
+    let obesityLabel = labelsGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x", -40 - (height / 2))
+        .attr("dy", "lem")
+        .classed("inactive", false)
+        .text("Obese (%)");
 })
