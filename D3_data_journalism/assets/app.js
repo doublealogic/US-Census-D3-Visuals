@@ -284,5 +284,8 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
                         .classed("active", true)
                         .classed("inactive", false);
                 }
-        })
+            }
+        });
+}).catch(function(error) {
+    console.log(error);
 });
