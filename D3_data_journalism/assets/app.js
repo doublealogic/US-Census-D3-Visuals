@@ -221,4 +221,68 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("dy", "lem")
         .classed("inactive", false)
         .text("Obese (%)");
-})
+
+    var circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
+
+    labelsGroup.selectAll("text")
+        .on("click", function() {
+            // Gets value of selection
+            let value = d3.select(this).attr("value");
+            if (value !== selectedXAxis) {
+
+                // Replaces selectedXAxis with Value
+                selectedXAxis = value;
+
+                // Updates X Scale with new data
+                xLinearScale = xScale(journalismData, selectedXAxis);
+
+                // Updates X Axis with transition
+                xAxis = renderXAxis(xLinearScale, xAxis);
+
+                // Updates Y Scale with new data
+                yLinearScale = yScale(journalismData, selectedYAxis);
+
+                // Updates Y Axis with transition
+                yAxis = renderYAxis(yLinearScale, yAxis);
+
+                // Updates Circles with new x and y values
+                circlesGroup = renderCircles(circlesGroup, xLinearScale, selectedXAxis, yLinearScale, selectedYaxis);
+
+                // Updates Tooltips with new information
+                circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
+
+                if (selectedXAxis === "poverty") {
+                    povertyLabel
+                        .classed("active", true)
+                        .classed("inactive", false);
+                    ageLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    incomeLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                }
+                else if (selectedXAxis === "age") {
+                    povertyLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    ageLabel
+                        .classed("active", true)
+                        .classed("inactive", false);
+                    incomeLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                }
+                else {
+                    povertyLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    ageLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    incomeLabel
+                        .classed("active", true)
+                        .classed("inactive", false);
+                }
+        })
+});
