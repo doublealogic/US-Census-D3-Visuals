@@ -163,7 +163,7 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
         .call(leftAxis);
 
     // Appends Initial Circles
-    let circlesGroup = chartGroup.selectAll("circle")
+    var circlesGroup = chartGroup.selectAll("circle")
         .data(journalismData)
         .enter()
         .append("circle")
