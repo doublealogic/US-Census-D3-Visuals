@@ -12,6 +12,19 @@ The data set that is used for this repository is derived from the 2014 ACS 1-yea
 
 My main core task was to create a scatter plot between two of the data variables such as `Healthcare vs. Poverty` or `Smokers vs. Age`. I started with `Healthcare vs. Poverty`.
 
-Using D3 Techniques, I created a scatter plot that represented each state with circle elements. The code for this graphic is written in the [app.js](D3_data_journalism/assets/app.js) file within my assets folder. 
+Using D3 Techniques, I created a scatter plot that represented each state with circle elements. The code for this graphic is written in the [app.js](D3_data_journalism/assets/app.js) file within my assets folder. Within this graphic I made sure that I:
+
+* Included state abbreviations in the circles.
+
+* Created and situated my axes and labels to the left and bottom of the chart.
 
 ## Bonus Task
+
+To improve the graphic, I turned it from a static one and made it more interactive.
+
+### More Data
+First, I placed additional labels in the scatter plot. and income in the x-axis, smoking and obesity in the y-axis. Then, I gave them all click events giving users a choice of which data to display. When the click event happens, I animated the transitions for your circles' locations as well as the range of my axes. 
+
+To help with this process I binded all of the CSV data to my circles, which let me easily determine the x or y values when one clicks the labels.
+
+### Incorporating D3-Tip
