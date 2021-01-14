@@ -186,7 +186,8 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("r", 20)
         .attr("fill", "pink")
         .attr("opacity", ".5")
-        .append("text")
+        
+    var textGroup = circlesGroup.append("text")
         .text(d => d.abbr)
         .attr("font-size", 14)
         .attr("dx", d => xLinearScale(d[selectedXAxis]) - 10)
