@@ -132,7 +132,7 @@ function updateToolTip(selectedXAxis, selectedYAxis, circlesGroup) {
 }
 
 // Retrieves data from CSV file and executes all below
-d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
+d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
     if (err) throw err;
 
     // Parses data
@@ -198,28 +198,28 @@ d3.csv("census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("inactive", true)
         .text("Household Income (Median)");
     
-    let healthcareLabel = labelsGroup.append("text")
+    let healthcareLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
+        .attr("y", 0 - (margin.left * (2 / 3)))
         .attr("x", 0 - (height / 2))
         .attr("dy", "lem")
         .classed("active", true)
         .text("Lacks Healthcare (%)");
 
-    let smokesLabel = labelsGroup.append("text")
+    let smokesLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x", -20 - (height / 2))
+        .attr("y", 0 - (margin.left / 2))
+        .attr("x", 0 - (height / 2))
         .attr("dy", "lem")
-        .classed("inactive", false)
+        .classed("inactive", true)
         .text("Smokes (%)");
 
-    let obesityLabel = labelsGroup.append("text")
+    let obesityLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x", -40 - (height / 2))
+        .attr("y", 0 - (margin.left / 3))
+        .attr("x", 0 - (height / 2))
         .attr("dy", "lem")
-        .classed("inactive", false)
+        .classed("inactive", true)
         .text("Obese (%)");
 
     var circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
