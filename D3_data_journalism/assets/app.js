@@ -78,7 +78,8 @@ function renderXCircles(circlesGroup, newXScale, selectedXAxis) {
     
     circlesGroup.transition()
         .duration(1000)
-        .attr("cx", d => newXScale(d[selectedXAxis]));
+        .attr("cx", d => newXScale(d[selectedXAxis]))
+        .attr("dx", d => newXScale(d[selectedXAxis]));
 
     return circlesGroup;
 }
@@ -87,7 +88,8 @@ function renderYCircles(circlesGroup, newYScale, selectedYAxis) {
     
     circlesGroup.transition()
         .duration(1000)
-        .attr("cy", d => newYScale(d[selectedYAxis]));
+        .attr("cy", d => newYScale(d[selectedYAxis]))
+        .attr("dy", d => newYScale(d[selectedYAxis]));
 
     return circlesGroup;
 }
@@ -263,13 +265,13 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
                 selectedXAxis = xValue;
 
                 // Updates X Scale with new data
-                xLinearScale = xScale(journalismData, selectedXAxis);
+                var newXScale = xScale(journalismData, selectedXAxis);
 
                 // Updates X Axis with transition
-                xAxis = renderXAxis(xLinearScale, xAxis);
+                xAxis = renderXAxis(newXScale, xAxis);
 
                 // Updates Circles with new x and y values
-                circlesGroup = renderXCircles(circlesGroup, xLinearScale, selectedXAxis);
+                circlesGroup = renderXCircles(circlesGroup, newXScale, selectedXAxis);
 
                 // Updates Tooltips with new information
                // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
@@ -314,19 +316,18 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .on("click", function() {
             // Gets value of selection
             let yValue = d3.select(this).attr("value");
-            console.log(this)
             if (yValue !== selectedYAxis) {
 
                 selectedYAxis = yValue;
 
                 // Updates Y Scale with new data
-                yLinearScale = yScale(journalismData, selectedYAxis);
+                var newYScale = yScale(journalismData, selectedYAxis);
 
                 // Updates Y Axis with transition
-                yAxis = renderYAxis(yLinearScale, yAxis);
+                yAxis = renderYAxis(newYScale, yAxis);
 
                 // Updates Circles with new x and y values
-                circlesGroup = renderYCircles(circlesGroup, yLinearScale, selectedYAxis);
+                circlesGroup = renderYCircles(circlesGroup, newYScale, selectedYAxis);
 
                 // Updates Tooltips with new information
                 // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
