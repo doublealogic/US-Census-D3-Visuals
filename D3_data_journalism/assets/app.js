@@ -265,13 +265,13 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
                 selectedXAxis = xValue;
 
                 // Updates X Scale with new data
-                var newXScale = xScale(journalismData, selectedXAxis);
+                var xLinearScale = xScale(journalismData, selectedXAxis);
 
                 // Updates X Axis with transition
-                xAxis = renderXAxis(newXScale, xAxis);
+                xAxis = renderXAxis(xLinearScale, xAxis);
 
                 // Updates Circles with new x and y values
-                circlesGroup = renderXCircles(circlesGroup, newXScale, selectedXAxis);
+                circlesGroup = renderXCircles(circlesGroup, xLinearScale, selectedXAxis);
 
                 // Updates Tooltips with new information
                // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
@@ -321,13 +321,13 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
                 selectedYAxis = yValue;
 
                 // Updates Y Scale with new data
-                var newYScale = yScale(journalismData, selectedYAxis);
+                var yLinearScale = yScale(journalismData, selectedYAxis);
 
                 // Updates Y Axis with transition
-                yAxis = renderYAxis(newYScale, yAxis);
+                yAxis = renderYAxis(yLinearScale, yAxis);
 
                 // Updates Circles with new x and y values
-                circlesGroup = renderYCircles(circlesGroup, newYScale, selectedYAxis);
+                circlesGroup = renderYCircles(circlesGroup, yLinearScale, selectedYAxis);
 
                 // Updates Tooltips with new information
                 // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
