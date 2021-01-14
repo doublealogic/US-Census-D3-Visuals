@@ -93,54 +93,54 @@ function renderYCircles(circlesGroup, newYScale, selectedYAxis) {
 }
 
 // Updates Circles Group with new tooltips
-function updateToolTip(selectedXAxis, selectedYAxis, circlesGroup) {
+// function updateToolTip(selectedXAxis, selectedYAxis, circlesGroup) {
 
-    var xLabel;
+   // var xLabel;
 
-    if (selectedXAxis === "poverty") {
-        xLabel = "In Poverty (%):";
-    }
-    else if (selectedXAxis === "age") {
-        xLabel = "Age (Median):";
-    }
-    else {
-        xLabel = "Household Income (Median):";
-    }
+  //  if (selectedXAxis === "poverty") {
+  //      xLabel = "In Poverty (%):";
+  //  }
+  //  else if (selectedXAxis === "age") {
+  //      xLabel = "Age (Median):";
+  //  }
+   // else {
+  //      xLabel = "Household Income (Median):";
+  //  }
 
-    var yLabel;
+  //  var yLabel;
 
-    if (selectedYAxis === "healthcare") {
-        yLabel = "Lacks Healthcare (%)";
-    }
-    else if (selectedYAxis === "smokes") {
-        yLabel = "Smokes (%):";
-    }
-    else {
-        yLabel = "Obese (%):";
-    }
+  //  if (selectedYAxis === "healthcare") {
+  //      yLabel = "Lacks Healthcare (%)";
+   // }
+  //  else if (selectedYAxis === "smokes") {
+  //      yLabel = "Smokes (%):";
+  //  }
+  //  else {
+  //      yLabel = "Obese (%):";
+  //  }
+//
+  //  var toolTip = d3.tip()
+    //    .attr("class", "tooltip")
+   //     .offset([80, -60])
+  //      .html(function(d) {
+   //         return (`${d.state}<br>${xLabel} ${d[selectedXAxis]}<br>${yLabel} ${d[selectedYAxis]}`);
+   //     });
 
-    var toolTip = d3.tip()
-        .attr("class", "tooltip")
-        .offset([80, -60])
-        .html(function(d) {
-            return (`${d.state}<br>${xLabel} ${d[selectedXAxis]}<br>${yLabel} ${d[selectedYAxis]}`);
-        });
+   //     console.log(toolTip);
 
-        console.log(toolTip);
-
-    circlesGroup.call(toolTip);
+   // circlesGroup.call(toolTip);
     
 
-    circlesGroup.on("mouseover", function(data) {
-        toolTip.show(data);
-    })
+   // circlesGroup.on("mouseover", function(data) {
+  //      toolTip.show(data);
+  //  })
         // On Mouseout Event
-        .on("mouseout", function(data, index) {
-            toolTip.hide(data);
-        });
+    //    .on("mouseout", function(data, index) {
+   //         toolTip.hide(data);
+   //     });
 
-    return circlesGroup;
-}
+ //   return circlesGroup;
+//}
 
 // Retrieves data from CSV file and executes all below
 d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
