@@ -226,6 +226,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("y", 0 - (margin.left * (2 / 3)))
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
+        .attr("value", "healthcare") // Value being grabbed for event listener
         .classed("active", true)
         .classed("y-label", true)
         .text("Lacks Healthcare (%)");
@@ -235,6 +236,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("y", 0 - (margin.left / 2))
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
+        .attr("value", "smokes") // Value being grabbed for event listener
         .classed("inactive", true)
         .classed("y-label", true)
         .text("Smokes (%)");
@@ -244,6 +246,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("y", 0 - (margin.left / 3))
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
+        .attr("value", "obesity") // Value being grabbed for event listener
         .classed("inactive", true)
         .classed("y-label", true)
         .text("Obese (%)");
@@ -311,6 +314,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .on("click", function() {
             // Gets value of selection
             let yValue = d3.select(this).attr("value");
+            console.log(this)
             if (yValue !== selectedYAxis) {
 
                 selectedYAxis = yValue;
