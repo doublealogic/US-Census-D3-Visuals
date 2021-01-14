@@ -31,7 +31,7 @@ var selectedYAxis = "healthcare";
 
 // The xScale function updates x-scale variables upon clicking the axis label
 function xScale(journalismData, selectedXAxis) {
-    let xLinearScale = d3.scaleLinear()
+    var xLinearScale = d3.scaleLinear()
         .domain([d3.min(journalismData, d => d[selectedXAxis]) * 0.8,
             d3.max(journalismData, d => d[selectedXAxis]) * 1.2
         ])
@@ -42,7 +42,7 @@ function xScale(journalismData, selectedXAxis) {
 
 // The renderXAxis function in turn updates the xAxis variables upon clicking the axis label
 function renderXAxis(newXScale, xAxis) {
-    let bottomAxis = d3.axisBottom(newXScale);
+    var bottomAxis = d3.axisBottom(newXScale);
 
     xAxis.transition()
         .duration(1000)
@@ -53,7 +53,7 @@ function renderXAxis(newXScale, xAxis) {
 
 // The yScale function updates y-scale variables upon clicking the axis label
 function yScale(journalismData, selectedYAxis) {
-    let yLinearScale = d3.scaleLinear()
+    var yLinearScale = d3.scaleLinear()
         .domain([d3.min(journalismData, d => d[selectedYAxis]) * 0.8,
             d3.max(journalismData, d => d[selectedYAxis]) * 1.2
         ])
@@ -64,7 +64,7 @@ function yScale(journalismData, selectedYAxis) {
 
 // The renderYAxis function in turn updates the yAxis variables upon clicking the axis label
 function renderYAxis(newYScale, yAxis) {
-    let leftAxis = d3.axisLeft(newYScale);
+    var leftAxis = d3.axisLeft(newYScale);
 
     yAxis.transition()
         .duration(1000)
@@ -160,8 +160,8 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
     var yLinearScale = yScale(journalismData, selectedYAxis);
 
     // Creates Initial Axis Functions
-    let bottomAxis = d3.axisBottom(xLinearScale);
-    let leftAxis = d3.axisLeft(yLinearScale);
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
 
     // Appends X Axis
     var xAxis = chartGroup.append("g")
@@ -194,10 +194,10 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
 
     
     // Creates groups for two x-axis labels
-    let labelsGroup = chartGroup.append("g")
+    var labelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
-    let povertyLabel = labelsGroup.append("text")
+    var povertyLabel = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
         .attr("value", "poverty") // Value being grabbed for event listener
@@ -205,7 +205,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("x-label", true)
         .text("In Poverty (%)");
 
-    let ageLabel = labelsGroup.append("text")
+    var ageLabel = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
         .attr("value", "age") // Value being grabbed for event listener
@@ -213,7 +213,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("x-label", true)
         .text("Age (Median)");
 
-    let incomeLabel = labelsGroup.append("text")
+    var incomeLabel = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
         .attr("value", "income") // Value being grabbed for event listener
@@ -221,7 +221,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("x-label", true)
         .text("Household Income (Median)");
     
-    let healthcareLabel = chartGroup.append("text")
+    var healthcareLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - (margin.left * (2 / 3)))
         .attr("x", 0 - (height / 2))
@@ -230,7 +230,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("y-label", true)
         .text("Lacks Healthcare (%)");
 
-    let smokesLabel = chartGroup.append("text")
+    var smokesLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - (margin.left / 2))
         .attr("x", 0 - (height / 2))
@@ -239,7 +239,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .classed("y-label", true)
         .text("Smokes (%)");
 
-    let obesityLabel = chartGroup.append("text")
+    var obesityLabel = chartGroup.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - (margin.left / 3))
         .attr("x", 0 - (height / 2))
@@ -250,11 +250,10 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
 
     //var circlesGroup = updateToolTip(selectedXAxis, selectedYAxis, circlesGroup);
 
-    labelsGroup.selectAll("text")
+    d3.selectAll("text.x-label")
         .on("click", function() {
             // Gets value of selection
             let xValue = d3.select(this).attr("value");
-            console.log("I made it")
             if (xValue !== selectedXAxis) {
 
                 // Replaces selectedXAxis with Value
@@ -308,7 +307,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
             }
         });
 
-    chartGroup.selectAll("text")
+    d3.selectAll("text.y-label")
         .on("click", function() {
             // Gets value of selection
             let yValue = d3.select(this).attr("value");
