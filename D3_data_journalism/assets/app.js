@@ -180,15 +180,13 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
     var circlesGroup = chartGroup.selectAll("circle")
         .data(journalismData)
         .enter()
-
-    circlesGroup.append("circle")
+        .append("circle")
         .attr("cx", d => xLinearScale(d[selectedXAxis]))
         .attr("cy", d => yLinearScale(d[selectedYAxis]))
         .attr("r", 20)
         .attr("fill", "pink")
         .attr("opacity", ".5")
-        
-    circlesGroup.append("text")
+        .append("text")
         .text(d => d.abbr)
         .attr("font-size", 14)
         .attr("dx", d => xLinearScale(d[selectedXAxis]) - 10)
