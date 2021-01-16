@@ -128,8 +128,6 @@ function updateToolTip(selectedXAxis, selectedYAxis, circlesGroup) {
             return (`${d.state}<br>${xLabel} ${d[selectedXAxis]}<br>${yLabel} ${d[selectedYAxis]}`);
         });
 
-        console.log(toolTip);
-
     circlesGroup.call(toolTip);
     
 
@@ -187,16 +185,14 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
         .attr("fill", "pink")
         .attr("opacity", ".5")
         
-    chartGroup.selectAll("circle")
-        .data(journalismData)
-        .enter()
-        .append("text")
+    circlesGroup.append("text")
         .text(d => d.abbr)
         .attr("font-size", 14)
         .attr("dx", d => xLinearScale(d[selectedXAxis]) - 10)
         .attr("dy", d => yLinearScale(d[selectedYAxis]) + 5);
 
-    
+    console.log(circlesGroup)
+
     // Creates groups for two x-axis labels
     var labelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
@@ -276,7 +272,7 @@ d3.csv("assets/census_Journalism_Data.csv").then(function(journalismData, err) {
                 circlesGroup = renderXCircles(circlesGroup, xLinearScale, selectedXAxis);
 
                 // Updates Tooltips with new information
-               // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
+                // circlesGroup = updateToolTip(selectedXAxis, circlesGroup);
 
                 if (selectedXAxis === "poverty") {
                     povertyLabel
