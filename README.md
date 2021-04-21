@@ -22,6 +22,9 @@ Using D3 Techniques, I created a scatter plot that represented each state with c
 
 To improve the graphic, I turned it from a static one and made it more interactive.
 
+## Chart Preview
+![Static Chart](D3_data_journalism/D3_Chart_Preview.PNG)
+
 ### More Data
 
 First, I placed additional labels in the scatter plot; age and income in the x-axis, smoking and obesity in the y-axis. Then, I gave them all click events giving users a choice of which data to display. When the click event happens, I animated the transitions for your circles' locations as well as the range of my axes. 
