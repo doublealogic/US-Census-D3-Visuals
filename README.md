@@ -24,6 +24,7 @@ To improve the graphic, I turned it from a static one and made it more interacti
 
 ## Chart Preview
 ![Static Chart](D3_data_journalism/D3_Chart_Preview.PNG)
+![Interactive Chart Example](D3_data_journalism/D3_Chart_Preview2.gif)
 
 ### More Data
 
