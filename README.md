@@ -12,11 +12,9 @@ The data set that is used for this repository is derived from the 2014 ACS 1-yea
 
 My main core task was to create a scatter plot between two of the data variables. I started with `Healthcare vs. Poverty`.
 
-Using D3 Techniques, I created a scatter plot that represented each state with circle elements. The code for this graphic is written in the [app.js](D3_data_journalism/assets/app.js) file within my assets folder. Within this graphic I made sure that I:
+Using D3 Techniques, I created a scatter plot that represented each state with circle elements. The code for this graphic is written in the [app.js](D3_data_journalism/assets/app.js) file within my assets folder. Within this graphic I made sure that I created and situated my axes and labels to the left and bottom of the chart.
 
-* Included state abbreviations in the circles.
-
-* Created and situated my axes and labels to the left and bottom of the chart.
+Currenly I'm working on being able to include state abbreviations in the circles.
 
 ## Bonus Task
 
